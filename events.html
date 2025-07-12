@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Event Locator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-map-marker-alt me-2"></i>EventLocator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html"><i class="fas fa-calendar me-1"></i> Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html"><i class="fas fa-heart me-1"></i> Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt me-1"></i> Login</button>
+                    <button class="btn btn-primary"><i class="fas fa-user-plus me-1"></i> Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container mt-5 pt-4">
+        <div class="back-to-home mb-4">
+            <a href="index.html" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-2"></i> Back to Home</a>
+        </div>
+        
+        <div class="events-list-header">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>All Events</h1>
+                <div class="d-flex">
+                    <div class="me-3">
+                        <select class="form-select" id="sort-events">
+                            <option selected>Sort by Date</option>
+                            <option>Sort by Name</option>
+                            <option>Sort by Price</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        <i class="fas fa-sliders-h"></i> Filters
+                    </button>
+                </div>
+            </div>
+            
+            <div class="applied-filters mb-4">
+                <span class="badge bg-primary me-2 filter-badge">Music <i class="fas fa-times ms-1"></i></span>
+                <span class="badge bg-primary me-2 filter-badge">This Week <i class="fas fa-times ms-1"></i></span>
+                <span class="badge bg-primary me-2 filter-badge">Under $50 <i class="fas fa-times ms-1"></i></span>
+            </div>
+        </div>
+        
+        <div class="row g-4" id="events-container">
+            <!-- Events will be dynamically inserted here -->
+        </div>
+        
+        <nav class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter Events</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Date Range</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                            <input type="date" class="form-control" id="start-date">
+                            <span class="input-group-text">to</span>
+                            <input type="date" class="form-control" id="end-date">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Categories</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="music" id="filter-music">
+                            <label class="form-check-label" for="filter-music">Music</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="art" id="filter-art">
+                            <label class="form-check-label" for="filter-art">Art & Culture</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="food" id="filter-food">
+                            <label class="form-check-label" for="filter-food">Food & Drink</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="sports" id="filter-sports">
+                            <label class="form-check-label" for="filter-sports">Sports</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="tech" id="filter-tech">
+                            <label class="form-check-label" for="filter-tech">Technology</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="business" id="filter-business">
+                            <label class="form-check-label" for="filter-business">Business</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Price Range</label>
+                        <input type="range" class="form-range" min="0" max="500" step="5" id="price-range">
+                        <div class="d-flex justify-content-between">
+                            <span>$0</span>
+                            <span id="price-value">$250</span>
+                            <span>$500</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-4">EventLocator</h5>
+                    <p>Discover the best events happening in your city. From concerts to conferences, we help you find experiences you'll love.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="events.html" class="text-white text-decoration-none">Events</a></li>
+                        <li class="mb-2"><a href="events.html" class="text-white text-decoration-none">Categories</a></li>
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Featured</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="mb-4">Event Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="events.html?category=music" class="text-white text-decoration-none">Music Concerts</a></li>
+                        <li class="mb-2"><a href="events.html?category=art" class="text-white text-decoration-none">Art Exhibitions</a></li>
+                        <li class="mb-2"><a href="events.html?category=food" class="text-white text-decoration-none">Food Festivals</a></li>
+                        <li class="mb-2"><a href="events.html?category=sports" class="text-white text-decoration-none">Sports Events</a></li>
+                        <li class="mb-2"><a href="events.html?category=tech" class="text-white text-decoration-none">Tech Conferences</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Subscribe to get updates on upcoming events in your city.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 EventLocator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Event data
+        const events = [
+            {
+                id: 1,
+                title: "Summer Music Festival",
+                category: "Music",
+                date: "Jul 15, 2023",
+                location: "Central Park, New York",
+                price: "$49.99",
+                description: "Join us for the biggest music festival of the summer featuring top artists from around the world.",
+                image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 2,
+                title: "Modern Art Exhibition",
+                category: "Art",
+                date: "Jul 22, 2023",
+                location: "City Art Gallery, Chicago",
+                price: "$24.99",
+                description: "Experience contemporary art from emerging artists in this groundbreaking exhibition.",
+                image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 3,
+                title: "International Food Festival",
+                category: "Food",
+                date: "Aug 5, 2023",
+                location: "Riverside Park, San Francisco",
+                price: "$15.00",
+                description: "Taste cuisine from around the world in this celebration of global culinary traditions.",
+                image: "https://images.unsplash.com/photo-1556911220-ef412aea183c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 4,
+                title: "Tech Innovators Conference",
+                category: "Tech",
+                date: "Aug 12, 2023",
+                location: "Convention Center, Austin",
+                price: "$199.99",
+                description: "Join tech leaders and innovators to discuss the future of technology and digital transformation.",
+                image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 5,
+                title: "City Marathon 2023",
+                category: "Sports",
+                date: "Sep 3, 2023",
+                location: "Downtown, Boston",
+                price: "$45.00",
+                description: "Annual city marathon with routes through historic neighborhoods and along the waterfront.",
+                image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 6,
+                title: "Summer Jazz Night",
+                category: "Music",
+                date: "Jul 29, 2023",
+                location: "Jazz Club, New Orleans",
+                price: "$35.00",
+                description: "Enjoy an evening of smooth jazz performances in the heart of the French Quarter.",
+                image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 7,
+                title: "Business Leadership Summit",
+                category: "Business",
+                date: "Sep 15, 2023",
+                location: "Grand Hotel, Seattle",
+                price: "$299.99",
+                description: "Learn from industry leaders about strategies for growth, innovation, and leadership.",
+                image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            },
+            {
+                id: 8,
+                title: "Local Craft Beer Festival",
+                category: "Food",
+                date: "Aug 19, 2023",
+                location: "Brewery District, Portland",
+                price: "$25.00",
+                description: "Sample craft beers from local breweries with food pairings and live music.",
+                image: "https://images.unsplash.com/photo-1505075106905-fb052892c116?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+            }
+        ];
+
+        // Function to display events
+        function displayEvents(eventsToShow) {
+            const eventsContainer = document.getElementById('events-container');
+            eventsContainer.innerHTML = '';
+            
+            eventsToShow.forEach(event => {
+                const eventCard = `
+                <div class="col-lg-4 col-md-6">
+                    <a href="event-details.html?id=${event.id}" class="event-card card">
+                        <div class="position-relative">
+                            <img src="${event.image}" class="card-img-top event-img" alt="${event.title}">
+                            <div class="event-date">${event.date}</div>
+                            <div class="event-category">${event.category}</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${event.title}</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt text-primary me-2"></i> ${event.location}</p>
+                            <p class="card-text">${event.description}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">${event.price}</span>
+                                <span class="btn btn-sm btn-outline-primary">Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                `;
+                eventsContainer.innerHTML += eventCard;
+            });
+        }
+
+        // Filter events based on URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            const searchTerm = localStorage.getItem('searchTerm') || '';
+            const date = localStorage.getItem('date') || '';
+            
+            let filteredEvents = events;
+            
+            // Apply category filter
+            if (category && category !== 'all') {
+                filteredEvents = filteredEvents.filter(event => 
+                    event.category.toLowerCase().includes(category.toLowerCase())
+                );
+            }
+            
+            // Apply search term filter
+            if (searchTerm) {
+                filteredEvents = filteredEvents.filter(event => 
+                    event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    event.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+            
+            // Apply date filter (simple implementation)
+            if (date) {
+                filteredEvents = filteredEvents.filter(event => 
+                    event.date.includes(date.substring(5, 7)) // Just checking month for demo
+                );
+            }
+            
+            displayEvents(filteredEvents);
+            
+            // Clear localStorage after use
+            localStorage.removeItem('searchTerm');
+            localStorage.removeItem('date');
+            localStorage.removeItem('category');
+        });
+    </script>
+</body>
+</html>

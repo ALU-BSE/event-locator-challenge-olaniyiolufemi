@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Locator | Find Events in Your City</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-map-marker-alt me-2"></i>EventLocator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html"><i class="fas fa-calendar me-1"></i> Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html"><i class="fas fa-heart me-1"></i> Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt me-1"></i> Login</button>
+                    <button class="btn btn-primary"><i class="fas fa-user-plus me-1"></i> Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Discover Amazing Events Near You</h1>
+            <p class="lead">Find concerts, festivals, workshops and more happening in your city</p>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <div class="container">
+        <div class="search-container">
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control form-control-lg" placeholder="Search events..." id="search-input">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="date" class="form-control form-control-lg" id="date-filter">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select form-control-lg" id="category-filter">
+                        <option value="all" selected>All Categories</option>
+                        <option value="music">Music</option>
+                        <option value="art">Art & Culture</option>
+                        <option value="food">Food & Drink</option>
+                        <option value="sports">Sports</option>
+                        <option value="tech">Technology</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-lg w-100" onclick="window.location.href='events.html'">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="container mt-5">
+        <h2 class="section-title">Browse by Category</h2>
+        <div class="row g-4">
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=music" class="category-card card text-center p-4 bg-primary text-white">
+                    <i class="fas fa-music category-icon"></i>
+                    <h5>Music</h5>
+                </a>
+            </div>
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=art" class="category-card card text-center p-4 bg-success text-white">
+                    <i class="fas fa-palette category-icon"></i>
+                    <h5>Art</h5>
+                </a>
+            </div>
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=food" class="category-card card text-center p-4 bg-info text-white">
+                    <i class="fas fa-utensils category-icon"></i>
+                    <h5>Food</h5>
+                </a>
+            </div>
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=sports" class="category-card card text-center p-4 bg-warning text-dark">
+                    <i class="fas fa-running category-icon"></i>
+                    <h5>Sports</h5>
+                </a>
+            </div>
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=tech" class="category-card card text-center p-4 bg-danger text-white">
+                    <i class="fas fa-laptop-code category-icon"></i>
+                    <h5>Tech</h5>
+                </a>
+            </div>
+            <div class="col-md-2 col-6">
+                <a href="events.html?category=business" class="category-card card text-center p-4 bg-secondary text-white">
+                    <i class="fas fa-briefcase category-icon"></i>
+                    <h5>Business</h5>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-events mt-5">
+        <div class="container">
+            <h2 class="section-title">Featured Events</h2>
+            <div class="row g-4">
+                <!-- Event 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="event-details.html?id=1" class="event-card card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img-top event-img" alt="Music Festival">
+                            <div class="event-date">Jul 15, 2023</div>
+                            <div class="event-category">Music</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Summer Music Festival</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt text-primary me-2"></i> Central Park, New York</p>
+                            <p class="card-text">Join us for the biggest music festival of the summer featuring top artists from around the world.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">$49.99</span>
+                                <span class="btn btn-sm btn-outline-primary">Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="event-details.html?id=2" class="event-card card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img-top event-img" alt="Art Exhibition">
+                            <div class="event-date">Jul 22, 2023</div>
+                            <div class="event-category">Art</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Art Exhibition</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt text-primary me-2"></i> City Art Gallery, Chicago</p>
+                            <p class="card-text">Experience contemporary art from emerging artists in this groundbreaking exhibition.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">$24.99</span>
+                                <span class="btn btn-sm btn-outline-primary">Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="event-details.html?id=3" class="event-card card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1556911220-ef412aea183c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img-top event-img" alt="Food Festival">
+                            <div class="event-date">Aug 5, 2023</div>
+                            <div class="event-category">Food</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">International Food Festival</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt text-primary me-2"></i> Riverside Park, San Francisco</p>
+                            <p class="card-text">Taste cuisine from around the world in this celebration of global culinary traditions.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">$15.00</span>
+                                <span class="btn btn-sm btn-outline-primary">Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="events.html" class="btn btn-primary btn-lg"><i class="fas fa-calendar me-2"></i> View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-4">EventLocator</h5>
+                    <p>Discover the best events happening in your city. From concerts to conferences, we help you find experiences you'll love.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="events.html" class="text-white text-decoration-none">Events</a></li>
+                        <li class="mb-2"><a href="events.html" class="text-white text-decoration-none">Categories</a></li>
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Featured</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="mb-4">Event Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="events.html?category=music" class="text-white text-decoration-none">Music Concerts</a></li>
+                        <li class="mb-2"><a href="events.html?category=art" class="text-white text-decoration-none">Art Exhibitions</a></li>
+                        <li class="mb-2"><a href="events.html?category=food" class="text-white text-decoration-none">Food Festivals</a></li>
+                        <li class="mb-2"><a href="events.html?category=sports" class="text-white text-decoration-none">Sports Events</a></li>
+                        <li class="mb-2"><a href="events.html?category=tech" class="text-white text-decoration-none">Tech Conferences</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Subscribe to get updates on upcoming events in your city.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 EventLocator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set default date for date picker
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('date-filter').value = formattedDate;
+            
+            // Store search parameters for events page
+            document.querySelector('.btn-primary').addEventListener('click', function() {
+                const searchTerm = document.getElementById('search-input').value;
+                const date = document.getElementById('date-filter').value;
+                const category = document.getElementById('category-filter').value;
+                
+                localStorage.setItem('searchTerm', searchTerm);
+                localStorage.setItem('date', date);
+                localStorage.setItem('category', category);
+            });
+        });
+    </script>
+</body>
+</html>
